@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KSSM Form 2 Science Chapter 7 adventure game">
+  <title>Science Monsters KSSM</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">SM</div>
+      <div>
+        <p>KSSM FORM 2 SCIENCE</p>
+        <h1>SCIENCE MONSTERS</h1>
+      </div>
+      <div class="hud">
+        <span>STAGE <b id="hudStage">1</b></span>
+        <span>XP <b id="hudXp">0</b></span>
+        <span>HP <b id="hudHp">100</b></span>
+      </div>
+    </header>
+
+    <section id="startScreen" class="start-screen">
+      <div class="intro">
+        <span class="chapter-chip">CHAPTER 7</span>
+        <h2>Electricity &amp;<br><em>Magnetism Quest</em></h2>
+        <p>五个关卡，击败电力怪物，掌握电流、电压、电阻、电路与磁力。</p>
+        <button id="startBtn" class="primary">START GAME</button>
+      </div>
+      <div class="hero-art" aria-label="原创电系主角 Spark">
+        <div class="spark-creature">
+          <i class="ear left"></i><i class="ear right"></i>
+          <i class="face"></i><i class="eye one"></i><i class="eye two"></i>
+          <i class="cheek one"></i><i class="cheek two"></i><i class="tail"></i>
+        </div>
+        <div class="bolt bolt-a">⚡</div><div class="bolt bolt-b">⚡</div>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="game-screen hidden">
+      <nav id="stageMap" class="stage-map" aria-label="Stage map"></nav>
+
+      <div class="arena">
+        <div class="fighter">
+          <div class="player-avatar">S</div>
+          <strong>SPARK</strong>
+          <div class="hp-track"><i id="playerHpBar"></i></div>
+        </div>
+
+        <div id="attackFx" class="attack-fx hidden">⚡⚡⚡</div>
+
+        <div class="fighter">
+          <div id="enemyAvatar" class="enemy-avatar">?</div>
+          <strong id="enemyName">Enemy</strong>
+          <div class="hp-track"><i id="enemyHpBar"></i></div>
+        </div>
+      </div>
+
+      <section class="battle-card">
+        <div class="question-top">
+          <div>
+            <p id="stageLabel">STAGE 1</p>
+            <h2 id="stageTitle">Power Station</h2>
+          </div>
+          <span id="counter">1 / 7</span>
+        </div>
+        <h3 id="question"></h3>
+        <p id="questionZh"></p>
+        <div id="answers" class="answers"></div>
+        <div id="feedback" class="feedback hidden" aria-live="polite">
+          <div><b id="feedbackTitle"></b><p id="explanation"></p></div>
+          <button id="nextBtn">NEXT</button>
+        </div>
+      </section>
+    </section>
+
+    <section id="resultScreen" class="result-screen hidden">
+      <div class="badge">⚡</div>
+      <h2>MISSION COMPLETE</h2>
+      <p>你已经完成 Chapter 7 五个关卡。</p>
+      <div class="results-grid">
+        <div><b id="finalXp">0</b><span>XP</span></div>
+        <div><b id="finalCorrect">0/35</b><span>CORRECT</span></div>
+        <div><b id="finalRank">ROOKIE</b><span>RANK</span></div>
+      </div>
+      <button id="restartBtn" class="primary">PLAY AGAIN</button>
+    </section>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
