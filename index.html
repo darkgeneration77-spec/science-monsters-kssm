@@ -1,69 +1,49 @@
-<!doctype html>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="KSSM Form 2 Science Chapter 7 adventure game">
-  <title>Science Monsters KSSM</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Force Arena — Chapter 8.1</title>
+<style>
+:root{--bg:#060914;--panel:#10182d;--line:#30426d;--text:#f5f7ff;--muted:#aeb9d7;--cyan:#42e8ff;--purple:#a66cff;--gold:#ffd166;--red:#ff5470;--green:#4fe3a4}*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:radial-gradient(circle at top,#172b61,#060914 55%,#02040a);color:var(--text);min-height:100vh}button,input{font:inherit}.shell{max-width:1100px;margin:auto;padding:20px}.hidden{display:none!important}.card{background:linear-gradient(180deg,rgba(18,29,57,.97),rgba(8,14,29,.97));border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 18px 60px #0007}.start{max-width:720px;margin:7vh auto;text-align:center}.start h1{font-size:clamp(2.4rem,7vw,5rem);margin:0;background:linear-gradient(90deg,var(--cyan),#fff,var(--purple));-webkit-background-clip:text;color:transparent}.start p{color:var(--muted);line-height:1.6}.chapter{color:var(--cyan);font-weight:800;letter-spacing:.08em}.name{width:min(420px,100%);padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:#091127;color:#fff;margin:12px 0}.primary,.secondary{padding:13px 18px;border-radius:12px;cursor:pointer;font-weight:800}.primary{border:0;background:linear-gradient(90deg,var(--cyan),var(--purple));color:#06101e}.secondary{border:1px solid var(--line);background:#111b36;color:#fff}.topbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px}.brand{font-weight:900;letter-spacing:.08em}.hud{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px;margin-bottom:14px}.hudbox{background:#0d1630;border:1px solid var(--line);border-radius:14px;padding:12px}.label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.value{font-weight:800;margin-top:4px}.bar{height:12px;background:#250d19;border-radius:999px;overflow:hidden;margin-top:8px}.fill{height:100%;width:100%;background:linear-gradient(90deg,var(--red),#ff9f68);transition:.45s}.arena{position:relative;height:280px;overflow:hidden;border-radius:20px;border:1px solid var(--line);background:linear-gradient(#132a5d 0 58%,#18213c 58%);margin-bottom:14px}.stars{position:absolute;inset:0;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:38px 38px;opacity:.22}.fighter{position:absolute;bottom:36px;width:150px;text-align:center;transition:.35s}.player{left:7%}.boss{right:7%}.sprite{font-size:78px;filter:drop-shadow(0 9px 10px #0008)}.fighter-name{font-weight:900}.attack{animation:attack .45s ease}.hit{animation:hit .45s ease}.shake{animation:shake .35s ease}@keyframes attack{50%{transform:translateX(110px) scale(1.08)}}@keyframes hit{25%,75%{transform:translateX(12px);filter:brightness(2)}}@keyframes shake{25%{transform:translateX(-9px)}75%{transform:translateX(9px)}}.question-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:14px}.question h2{font-size:1.35rem;line-height:1.45;margin:8px 0}.cn{color:#d7def2}.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.answer{min-height:66px;text-align:left;padding:13px;border-radius:13px;border:1px solid #31446f;background:#101b37;color:#fff;cursor:pointer}.answer:hover{border-color:var(--cyan);background:#14264a}.answer.correct{border-color:var(--green);background:#10382f}.answer.wrong{border-color:var(--red);background:#421827}.skill{border:1px solid var(--line);padding:10px;border-radius:12px;margin:8px 0;color:var(--muted)}.skill.unlocked{color:#fff;border-color:var(--gold);background:#2b2410}.feedback{margin-top:12px;padding:12px;border-radius:12px;background:#0a1228;border-left:4px solid var(--cyan);line-height:1.5}.next{margin-top:12px}.stage-banner{text-align:center;color:var(--gold);font-weight:900;margin:8px 0 14px}.result{max-width:900px;margin:30px auto}.score{font-size:3rem;font-weight:900;color:var(--gold)}.review-item{margin-top:12px;padding:16px;border:1px solid var(--line);border-radius:14px;background:#0c1530}.review-item b{color:var(--cyan)}.wrong-answer{color:#ff9eb0}.correct-answer{color:#7ff0bc}.explain{color:#d8e0f7;line-height:1.55}.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}@media(max-width:760px){.hud{grid-template-columns:1fr}.question-grid{grid-template-columns:1fr}.answers{grid-template-columns:1fr}.arena{height:230px}.sprite{font-size:58px}.fighter{width:110px}.player{left:3%}.boss{right:3%}}
+</style>
 </head>
-<body>
-  <main class="shell">
-    <header class="topbar">
-      <div class="brand">SM</div>
-      <div><p>KSSM FORM 2 SCIENCE</p><h1>SCIENCE MONSTERS</h1></div>
-      <div class="hud"><span>PLAYER <b id="hudName">-</b></span><span>STAGE <b id="hudStage">1</b></span><span>XP <b id="hudXp">0</b></span><span>HP <b id="hudHp">100</b></span><span>COMBO <b id="hudCombo">0×</b></span></div>
-    </header>
-
-    <section id="startScreen" class="start-screen">
-      <div class="intro">
-        <span class="chapter-chip">CHAPTER 7</span>
-        <h2>Electricity &amp;<br><em>Magnetism Quest</em></h2>
-        <p>五个关卡，两个角色正面对决。答对发动技能，答错怪物反击。</p>
-        <label class="name-box">学生名字 Student Name
-          <input id="studentName" maxlength="24" placeholder="例如：Gordon">
-        </label>
-        <button id="startBtn" class="primary">START BATTLE</button>
-      </div>
-      <div class="hero-art" aria-label="原创电系主角 Spark">
-        <div class="spark-creature"><i class="ear left"></i><i class="ear right"></i><i class="face"></i><i class="eye one"></i><i class="eye two"></i><i class="cheek one"></i><i class="cheek two"></i><i class="tail"></i></div>
-        <div class="bolt bolt-a">⚡</div><div class="bolt bolt-b">⚡</div>
-      </div>
-    </section>
-
-    <section id="gameScreen" class="game-screen hidden">
-      <nav id="stageMap" class="stage-map" aria-label="Stage map"></nav>
-      <div id="battleFlash" class="battle-flash"></div>
-      <div class="arena" id="arena">
-        <div class="fighter player-fighter" id="playerFighter">
-          <div class="nameplate"><span id="playerNamePlate">SPARK</span><small>Lv. 7</small></div>
-          <div class="player-avatar">⚡</div>
-          <div class="hp-track"><i id="playerHpBar"></i></div>
-        </div>
-        <div id="impactText" class="impact-text hidden">CRITICAL!</div>
-        <div id="attackFx" class="attack-fx hidden">⚡⚡⚡</div>
-        <div class="fighter enemy-fighter" id="enemyFighter">
-          <div class="nameplate"><span id="enemyName">Enemy</span><small>BOSS</small></div>
-          <div id="enemyAvatar" class="enemy-avatar">?</div>
-          <div class="hp-track"><i id="enemyHpBar"></i></div>
-        </div>
-      </div>
-
-      <section class="battle-card">
-        <div class="question-top"><div><p id="stageLabel">STAGE 1</p><h2 id="stageTitle">Power Station</h2></div><span id="counter">1 / 7</span></div>
-        <h3 id="question"></h3><p id="questionZh"></p>
-        <div id="answers" class="answers"></div>
-        <div id="feedback" class="feedback hidden" aria-live="polite"><div><b id="feedbackTitle"></b><p id="explanation"></p></div><button id="nextBtn">NEXT</button></div>
-      </section>
-    </section>
-
-    <section id="resultScreen" class="result-screen hidden">
-      <div class="badge">⚡</div><h2>MISSION COMPLETE</h2><p><strong id="resultName"></strong>，你已经完成 Chapter 7 五个关卡。</p>
-      <div class="results-grid"><div><b id="finalXp">0</b><span>XP</span></div><div><b id="finalCorrect">0/35</b><span>CORRECT</span></div><div><b id="finalRank">ROOKIE</b><span>RANK</span></div><div><b id="bestCombo">0×</b><span>BEST COMBO</span></div></div>
-      <section id="reviewPanel" class="review-panel hidden"><div class="review-head"><div><p>收藏错题</p><h3>Wrong Answer Collection</h3></div><span id="wrongCount">0题</span></div><div id="reviewList"></div></section>
-      <button id="restartBtn" class="primary">PLAY AGAIN</button>
-    </section>
-  </main>
-  <script src="game.js"></script>
-</body>
-</html>
+<body><div class="shell">
+<section id="startScreen" class="start card"><div class="chapter">KSSM FORM 2 SCIENCE • CHAPTER 8.1</div><h1>FORCE ARENA</h1><p>Defeat five arena bosses by mastering the complete textbook content: definition of force, six types of force, characteristics, measurement, S.I. unit and action–reaction pairs.</p><p>击败五个竞技场首领，完整掌握课本 8.1：力的定义、六种力、力的三个特征、测量与单位，以及作用力与反作用力。</p><input id="playerName" class="name" maxlength="24" placeholder="Student name / 学生名字"><br><button id="startBtn" class="primary" type="button">ENTER THE ARENA</button></section>
+<main id="gameScreen" class="hidden"><div class="topbar"><div><div class="brand">FORCE ARENA</div><div class="chapter">CHAPTER 8.1 • FORCE</div></div><div id="studentTag"></div></div><div class="hud"><div class="hudbox"><div class="label">Stage</div><div id="stageName" class="value"></div></div><div class="hudbox"><div class="label">Boss HP</div><div class="bar"><div id="bossHp" class="fill"></div></div></div><div class="hudbox"><div class="label">Score / Combo</div><div class="value"><span id="score">0</span> • <span id="combo">0</span>x</div></div></div><div id="stageBanner" class="stage-banner"></div><section class="arena"><div class="stars"></div><div id="player" class="fighter player"><div class="sprite">🛡️</div><div id="playerLabel" class="fighter-name">Guardian</div></div><div id="boss" class="fighter boss"><div id="bossSprite" class="sprite">🗿</div><div id="bossLabel" class="fighter-name">Boss</div></div></section><div class="question-grid"><section class="question card"><div class="label">Question <span id="qNumber"></span> / <span id="qTotal"></span></div><h2 id="questionEn"></h2><div id="questionCn" class="cn"></div><div id="answers" class="answers"></div><div id="feedback" class="feedback hidden" aria-live="polite"></div><button id="nextBtn" type="button" class="primary next hidden">NEXT ATTACK</button></section><aside class="card"><h3>Force Cores</h3><div id="skills"></div></aside></div></main>
+<section id="resultScreen" class="result card hidden"><div class="chapter">MISSION COMPLETE</div><h1 id="resultTitle"></h1><div id="resultScore" class="score"></div><p id="resultSummary"></p><h2>Error Review / 错题复盘</h2><div id="reviewList"></div><div class="controls"><button id="retryBtn" class="primary" type="button">PLAY AGAIN</button><button id="wrongOnlyBtn" class="secondary" type="button">RETRY WRONG QUESTIONS</button></div></section>
+</div><script>
+const stages=[{name:'Stage 1 — Push & Pull Gate',boss:'Stone Golem',sprite:'🗿',skill:'Push–Pull Core'},{name:'Stage 2 — Six Forces Hunt',boss:'Force Chimera',sprite:'🐲',skill:'Six Forces Core'},{name:'Stage 3 — Vector Tower',boss:'Arrow Sentinel',sprite:'🤖',skill:'Characteristics Core'},{name:'Stage 4 — Newton Lab',boss:'Balance Warden',sprite:'⚙️',skill:'Measurement Core'},{name:'Stage 5 — Reaction Rift',boss:'Newton Phantom',sprite:'👻',skill:'Action–Reaction Core'}];
+const questions=[
+{s:0,en:'Which statement gives the textbook definition of force?',cn:'哪一句是课本中“力”的定义？',o:['Force is only a push.','Force is a pull or a push upon an object.','Force is the speed of an object.','Force is the mass of an object.'],a:1,e:'Force is a pull or a push upon an object. 力就是作用在物体上的推或拉。'},
+{s:0,en:'A finger presses a light switch. Which basic action is shown?',cn:'手指按下电灯开关，属于哪一种基本动作？',o:['Pull','Push','Float','Stretch'],a:1,e:'Pressing a switch applies a push. 按开关是向物体施加推力。'},
+{s:0,en:'A person opens a can by lifting its ring. Which basic action is shown?',cn:'拉起罐头拉环开罐，属于哪一种基本动作？',o:['Pull','Push','Weight','Normal force'],a:0,e:'The ring is pulled upward. 拉环被向上拉，因此是 pull。'},
+{s:0,en:'Why are daily activities such as opening a door and lifting an object related to force?',cn:'为什么开门和提起物体等日常活动都与力有关？',o:['They always produce light.','They involve a push or a pull.','They reduce mass.','They change temperature.'],a:1,e:'Daily actions commonly involve pushing or pulling objects. 日常动作通常包含推或拉。'},
+{s:0,en:'A ball is thrown upward and later falls back. Which force pulls it toward Earth?',cn:'球被抛向上后又落回地面，是哪一种力把它拉向地球？',o:['Elastic force','Normal force','Gravitational force','Frictional force'],a:2,e:'Gravitational force points toward the centre of Earth. 重力指向地球中心。'},
+{s:1,en:'Which force resists movement between two surfaces in contact?',cn:'哪一种力会阻碍两个接触表面之间的运动？',o:['Buoyant force','Frictional force','Weight','Elastic force'],a:1,e:'Frictional force resists motion and acts opposite to the direction of motion. 摩擦力阻碍运动，方向与运动方向相反。'},
+{s:1,en:'A wooden block is harder to push on sandpaper than on a smooth table. Why?',cn:'木块在砂纸上比在光滑桌面更难推动，为什么？',o:['Sandpaper produces greater friction.','Sandpaper removes weight.','The normal force disappears.','The block has less mass.'],a:0,e:'A rougher surface produces greater frictional force. 表面越粗糙，摩擦力越大。'},
+{s:1,en:'Which force exists when a spring is stretched or compressed?',cn:'弹簧被拉长或压缩时会产生哪一种力？',o:['Elastic force','Gravitational force','Buoyant force','Normal force'],a:0,e:'Elastic force exists when a material is stretched or compressed. 材料被拉长或压缩时会产生弹力。'},
+{s:1,en:'A wooden block released under water rises to the surface. Which force pushes it upward?',cn:'木块在水下放手后上升到水面，哪一种力把它向上推？',o:['Weight','Frictional force','Buoyant force','Gravitational force'],a:2,e:'Buoyant force is the upward thrust exerted by a fluid. 浮力是流体对物体产生的向上推力。'},
+{s:1,en:'Which statement correctly distinguishes weight from gravitational force?',cn:'哪一句正确说明重量与重力的关系？',o:['Weight is the gravitational force acting on an object.','Weight is the same as mass.','Weight acts upward.','Gravitational force exists only in water.'],a:0,e:'Weight is defined as the gravitational force acting on an object. 重量是作用在物体上的重力。'},
+{s:2,en:'Which set lists all three characteristics of force?',cn:'哪一组选项列出力的三个特征？',o:['Mass, volume, density','Magnitude, direction, point of application','Speed, time, distance','Push, pull, weight'],a:1,e:'Force has magnitude, direction and point of application. 力具有大小、方向和作用点。'},
+{s:2,en:'In a force arrow, what does the arrowhead mainly show?',cn:'在力的箭头中，箭头主要表示什么？',o:['Magnitude','Direction','Mass','Surface area'],a:1,e:'The arrowhead shows the direction in which the force acts. 箭头指向表示力的方向。'},
+{s:2,en:'A box is pushed with 10 N. What does “10 N” describe?',cn:'箱子受到 10 N 的推力，“10 N”表示什么？',o:['Point of application','Direction','Magnitude of force','Mass of the box'],a:2,e:'The numerical value describes the magnitude or strength of the force. 数值表示力的大小。'},
+{s:2,en:'When a hammer removes a nail, where is the point of application of force?',cn:'锤子拔钉时，力的作用点在哪里？',o:['At the hammer head where force is concentrated','At the end of the table','At Earth’s centre','Anywhere on the handle'],a:0,e:'The point of application is the area where the applied force is concentrated. 作用点是力集中施加的位置。'},
+{s:2,en:'A force arrow points left, but the answer says the force acts right. What is wrong?',cn:'力箭头向左，但答案说力向右，错在哪里？',o:['Magnitude is wrong.','Direction is inconsistent with the arrow.','Unit must be kg.','Force has no direction.'],a:1,e:'Force has direction; the written direction must match the arrow. 力有方向，文字必须与箭头一致。'},
+{s:3,en:'Which instrument is used to measure force?',cn:'用什么仪器测量力？',o:['Metre rule','Thermometer','Spring balance','Measuring cylinder'],a:2,e:'Force is measured using a spring balance. 力使用弹簧秤测量。'},
+{s:3,en:'What is the S.I. unit of force?',cn:'力的国际单位是什么？',o:['kilogram (kg)','newton (N)','pascal (Pa)','metre (m)'],a:1,e:'The S.I. unit of force is newton, symbol N. 力的国际单位是牛顿，符号 N。'},
+{s:3,en:'On Earth, an object with a mass of 1 kg has a weight of approximately…',cn:'在地球上，质量为 1 kg 的物体重量约为多少？',o:['1 N','5 N','10 N','100 N'],a:2,e:'The textbook relationship is 1 kg → 10 N. 课本关系：1 kg 的物体重量约为 10 N。'},
+{s:3,en:'What happens to a spring balance reading when more identical weights are added?',cn:'增加相同的重物后，弹簧秤读数会怎样？',o:['It decreases.','It stays unchanged.','It increases.','It becomes zero.'],a:2,e:'More weights produce a greater total force, so the reading increases. 重物越多，总力越大，读数越高。'},
+{s:3,en:'Why is the spring balance reading higher when a block is pulled across sandpaper?',cn:'为什么木块在砂纸上被拉动时，弹簧秤读数更高？',o:['The block becomes heavier.','Sandpaper produces greater frictional force.','The balance measures temperature.','Buoyant force increases.'],a:1,e:'Greater friction requires a greater pulling force. 摩擦力越大，需要更大的拉力。'},
+{s:4,en:'State Newton’s Third Law correctly.',cn:'正确写出牛顿第三定律。',o:['Every force causes acceleration only.','For every action force, there is a reaction force of the same magnitude but opposite direction.','Action and reaction act in the same direction.','Reaction force is always smaller.'],a:1,e:'Action and reaction forces have the same magnitude and opposite directions. 作用力与反作用力大小相同、方向相反。'},
+{s:4,en:'A book remains stationary on a table. Which two forces are involved?',cn:'书静止在桌面上，涉及哪两种力？',o:['Weight downward and normal force upward','Friction upward and weight downward','Buoyant force downward and normal force upward','Elastic force and friction'],a:0,e:'Weight acts downward while the table exerts an equal upward normal force. 重量向下，桌面支持力向上。'},
+{s:4,en:'A wooden block floats steadily on water. Which condition is correct?',cn:'木块稳定漂浮时，哪一个条件正确？',o:['Weight is greater than buoyant force.','Buoyant force equals weight and acts upward.','Both forces act downward.','There is no gravitational force.'],a:1,e:'For steady floating, buoyant force upward equals weight downward. 稳定漂浮时，向上的浮力等于向下的重量。'},
+{s:4,en:'Two trolleys are released from a compressed spring between them. What happens?',cn:'两辆小车之间的压缩弹簧被释放后，会怎样？',o:['Both move in the same direction.','Only one experiences force.','They move in opposite directions due to an action–reaction pair.','They remain stationary.'],a:2,e:'Each trolley exerts an equal and opposite force on the other, so they move apart. 两车互相施加大小相同、方向相反的力。'},
+{s:4,en:'A footballer kicks a ball. Which pair represents action and reaction?',cn:'足球员踢球时，哪一组表示作用力与反作用力？',o:['Foot pushes ball; ball pushes foot in the opposite direction.','Foot pushes ball; gravity pushes upward.','Ball moves; ground disappears.','Foot and ball push in the same direction.'],a:0,e:'The foot pushes the ball, and the ball pushes the foot with an equal opposite force. 脚推球，球也以大小相同、方向相反的力推脚。'}];
+let pool=[...questions],index=0,score=0,combo=0,wrong=[],locked=false,currentStage=-1;const $=id=>document.getElementById(id);
+function start(customPool){const name=$('playerName').value.trim()||localStorage.getItem('forceArenaName')||'Guardian';localStorage.setItem('forceArenaName',name);pool=customPool||[...questions];index=0;score=0;combo=0;wrong=[];locked=false;currentStage=-1;$('playerLabel').textContent=name;$('studentTag').textContent=name;$('startScreen').classList.add('hidden');$('resultScreen').classList.add('hidden');$('gameScreen').classList.remove('hidden');renderSkills();loadQuestion()}
+function renderSkills(){$('skills').innerHTML=stages.map((x,i)=>`<div class="skill ${i<currentStage?'unlocked':''}">${i<currentStage?'✓ ':''}${x.skill}</div>`).join('')}
+function loadQuestion(){locked=false;$('feedback').classList.add('hidden');$('nextBtn').classList.add('hidden');if(index>=pool.length){finish();return}const q=pool[index],st=q.s;if(st!==currentStage){currentStage=st;$('stageBanner').textContent=stages[st].name;$('bossLabel').textContent=stages[st].boss;$('bossSprite').textContent=stages[st].sprite;renderSkills()}$('stageName').textContent=stages[st].name;$('qNumber').textContent=index+1;$('qTotal').textContent=pool.length;$('questionEn').textContent=q.en;$('questionCn').textContent=q.cn;$('score').textContent=score;$('combo').textContent=combo;const stageQs=pool.filter(x=>x.s===st),answered=pool.slice(0,index).filter(x=>x.s===st).length;$('bossHp').style.width=`${Math.max(0,100-(answered/stageQs.length)*100)}%`;$('answers').innerHTML='';q.o.forEach((opt,i)=>{const b=document.createElement('button');b.type='button';b.className='answer';b.innerHTML=`<b>${String.fromCharCode(65+i)}.</b> ${opt}`;b.addEventListener('click',()=>answer(i,b));$('answers').appendChild(b)})}
+function answer(choice,button){if(locked)return;locked=true;const q=pool[index],buttons=[...document.querySelectorAll('.answer')];buttons.forEach((b,i)=>{b.disabled=true;if(i===q.a)b.classList.add('correct')});if(choice===q.a){combo++;score+=100+Math.min(combo,10)*10;$('feedback').innerHTML=`<b>Critical hit!</b><br>${q.e}`;$('player').classList.add('attack');$('boss').classList.add('hit');setTimeout(()=>{$('player').classList.remove('attack');$('boss').classList.remove('hit')},500)}else{combo=0;button.classList.add('wrong');wrong.push({...q,chosen:choice});$('feedback').innerHTML=`<b>Boss counterattack.</b><br>Correct answer: <b>${q.o[q.a]}</b><br>${q.e}`;$('boss').classList.add('attack');$('player').classList.add('shake');setTimeout(()=>{$('boss').classList.remove('attack');$('player').classList.remove('shake')},500)}$('score').textContent=score;$('combo').textContent=combo;$('feedback').classList.remove('hidden');$('nextBtn').classList.remove('hidden')}
+function finish(){$('gameScreen').classList.add('hidden');$('resultScreen').classList.remove('hidden');const total=pool.length,correct=total-wrong.length,pct=Math.round(correct/total*100);$('resultTitle').textContent=pct>=90?'FORCE MASTER':pct>=70?'ARENA CLEARED':'TRAINING REQUIRED';$('resultScore').textContent=`${correct}/${total} • ${pct}%`;$('resultSummary').textContent=pct>=90?'Excellent. You have mastered the key knowledge in textbook Section 8.1.':pct>=70?'Good foundation. Review the errors below before challenging the arena again.':'Important concepts are still unstable. Study each explanation below and retry the wrong questions.';$('reviewList').innerHTML=wrong.length?wrong.map((q,i)=>`<article class="review-item"><div class="label">Error ${i+1}</div><p><b>${q.en}</b><br>${q.cn}</p><p class="wrong-answer">Your answer: ${q.o[q.chosen]}</p><p class="correct-answer">Correct answer: ${q.o[q.a]}</p><p class="explain">${q.e}</p></article>`).join(''):'<div class="review-item"><b>Perfect clear.</b><p>No wrong answers. 全部正确，没有错题。</p></div>';$('wrongOnlyBtn').disabled=wrong.length===0;window.scrollTo({top:0,behavior:'smooth'})}
+$('startBtn').addEventListener('click',()=>start());$('nextBtn').addEventListener('click',()=>{index++;loadQuestion()});$('retryBtn').addEventListener('click',()=>start());$('wrongOnlyBtn').addEventListener('click',()=>{const retry=wrong.map(x=>questions.find(q=>q.en===x.en));start(retry)});$('playerName').value=localStorage.getItem('forceArenaName')||'';$('playerName').addEventListener('keydown',e=>{if(e.key==='Enter')start()});
+</script></body></html>
